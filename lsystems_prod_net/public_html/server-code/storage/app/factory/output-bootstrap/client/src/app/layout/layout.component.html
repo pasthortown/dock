@@ -1,0 +1,5 @@
+<app-navbar [profile_picture]="profile_picture" [user]="user"></app-navbar>
+<app-sidebar (collapsedEvent)="receiveCollapsed($event)" [profile_picture]="profile_picture" [user]="user"></app-sidebar>
+<section class="main-container" [ngClass]="{ collapsed: collapedSideBar }">
+  <router-outlet></router-outlet>
+</section>

@@ -1,0 +1,40 @@
+version: '3'
+
+networks:
+  siturin_chatterbot:
+    ipam:
+      config:
+        - subnet: 172.29.0.0/24
+
+services:
+  chatbot:
+    image: pasthortown/chatbot:https
+    restart: always
+    ports:
+    - "5000:5000"
+    volumes:
+    - ./ssl_certificates:/ssl_certificates 
+    - ./ssl_keys:/ssl_keys
+    environment:
+      TZ: America/Bogota
+    networks:
+      siturin_chatterbot:
+        ipv4_address: 172.29.0.10
+    links:
+    - mongo
+  mongo:
+    image: mongo:latest
+    restart: always
+    networks:
+      siturin_chatterbot:
+        ipv4_address: 172.29.0.11
+  mongo_express :
+    image: mongo-express:latest
+    restart: always
+    ports:
+    - "8081:8081"
+    networks:
+      siturin_chatterbot:
+        ipv4_address: 172.29.0.12
+    links:
+    - mongo

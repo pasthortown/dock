@@ -1,0 +1,46 @@
+<div class="sidebar-header bg-darkGrayBlue fg-white" data-image="images/sb-bg-1.jpg">
+   <a class="fg-white sub-action"[routerLink]="['/login']" (click)="logOut()">
+      <span class="mif-settings-power mif-2x"></span>
+   </a>
+   <a class="avatar" [routerLink]="['/profile']" [routerLinkActive]="['router-link-active']">
+      <img src="{{profileImg}}"/>
+   </a>
+   <span class="title">{{ user.name }}</span>
+   <span class="subtitle"> 2019 © LSystems</span>
+</div>
+<ul class="sidebar-menu">
+   <li class="group-title">BDD</li>
+   <li>
+      <a [routerLink]="['/resource_type']" [routerLinkActive]="['router-link-active']">ResourceType </a>
+   </li>
+   <li>
+      <a [routerLink]="['/schedule_type']" [routerLinkActive]="['router-link-active']">ScheduleType </a>
+   </li>
+   <li>
+      <a [routerLink]="['/guest_type']" [routerLinkActive]="['router-link-active']">GuestType </a>
+   </li>
+   <li>
+      <a [routerLink]="['/resource']" [routerLinkActive]="['router-link-active']">Resource </a>
+   </li>
+   <li>
+      <a [routerLink]="['/schedule']" [routerLinkActive]="['router-link-active']">Schedule </a>
+   </li>
+   <li>
+      <a [routerLink]="['/guest']" [routerLinkActive]="['router-link-active']">Guest </a>
+   </li>
+   <li>
+      <a [routerLink]="['/responsable']" [routerLinkActive]="['router-link-active']">Responsable </a>
+   </li>
+   <li>
+      <a [routerLink]="['/schedule_resource_assigment']" [routerLinkActive]="['router-link-active']">ScheduleResourceAssigment </a>
+   </li>
+   <li>
+      <a [routerLink]="['/schedule_resource_assistant']" [routerLinkActive]="['router-link-active']">ScheduleResourceAssistant </a>
+   </li>
+   <li>
+      <a [routerLink]="['/schedule_responsable_assigment']" [routerLinkActive]="['router-link-active']">ScheduleResponsableAssigment </a>
+   </li>
+   <li>
+      <a [routerLink]="['/role']" [routerLinkActive]="['router-link-active']">Role </a>
+   </li>
+</ul>

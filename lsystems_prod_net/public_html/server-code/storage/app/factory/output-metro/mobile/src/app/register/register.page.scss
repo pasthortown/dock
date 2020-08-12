@@ -1,0 +1,29 @@
+.register-container  {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color:rgba(75, 72, 72, 0.8);
+  background-image: url('./../../assets/images/wallpaper.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.pretty-form {
+  margin: 1vh;
+  margin-top: 7vh;
+  background-color:rgba(255, 255, 255, 0.9);;
+  padding: 1vh;
+  border-radius: 1vh;
+}
+
+.logo {
+  display: inline-block;
+  width: auto;
+  height: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+}

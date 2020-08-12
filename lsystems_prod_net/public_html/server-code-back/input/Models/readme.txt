@@ -1,0 +1,1 @@
+Aqui colocar aquellos archivos de modelos previos hechos en laravel o lumen y podrán ser importados

@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+    cells:
+        image: pydio/cells:latest
+        restart: always
+        ports: ["8080:8080"]
+        environment:
+            - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+            - CELLS_BIND=files.example.com:8080
+            - CELLS_EXTERNAL=https://files.example.com:8080
+        volumes:
+        - ./data:/etc
+        links:
+        - mysql:mysql
+    mysql:
+         image: mysql:5.7
+         restart: always
+         ports: ["3306:3306"]
+         environment:
+             MYSQL_ROOT_PASSWORD: P@ssw0rd
+             MYSQL_DATABASE: cells
+             MYSQL_USER: pydio
+             MYSQL_PASSWORD: P@ssw0rd
+         command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]

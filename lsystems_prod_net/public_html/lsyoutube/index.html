@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Youtube Downloader</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="inteligencia.js"></script>
+</head>
+<body style="background-image: url('https://www.freepngimg.com/thumb/game/65816-television-firewatch-campo-wallpaper-desktop-4k-santo.png'); background-repeat: no-repeat; background-size: cover cover;">
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">Youtube Downloader</h1>
+            <p class="lead">Interfáz gráfica para utilizar youtube-dl</p>
+            <hr class="my-4">
+            <div class="col-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="downdloadOneBTN" onclick="tabDownloadOne()">Descargar Uno</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="downdloadListBTN" onclick="tabDownloadList()">Descargar Lista</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 mt-2" id="downloadOneContainer">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="urlToDownload" placeholder="URL del video de Youtube">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary" onclick="video_info()">Información</button>
+                    </div>
+                </div>
+                <div class="col-12 mb-3 text-center" id="loadingInfo" style="display: none;">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <h3>Consultando...</h3>
+                </div>
+                <div class="input-group mb-3">
+                    <select class="form-control" id="download_format">
+                        <option value="0">Default</option>
+                        <option value="18">MP4 (18)</option>
+                        <option value="999">SOLO MP3</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-success" onclick="download_one()" id="downloadButton">Descargar</button>
+                    </div>
+                </div>    
+            </div>
+            <div class="col-12 mt-2" id="downloadListContainer" style="display: none;">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="folderListToDownload" placeholder="Nombre de la lista de Youtube">
+                    <input type="text" class="form-control" id="urlListToDownload" placeholder="URL de la lista de Youtube">
+                </div>
+                <div class="input-group mb-3">
+                    <select class="form-control" id="download_list_format">
+                        <option value="0">Default</option>
+                        <option value="999">SOLO MP3</option>
+                        <option value="18">MP4 (18)</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-success" onclick="download_multiple()">Descargar</button>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</body>
+</html>

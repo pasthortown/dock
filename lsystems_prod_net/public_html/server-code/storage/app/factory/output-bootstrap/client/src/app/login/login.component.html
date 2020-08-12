@@ -1,0 +1,66 @@
+<div class="container" class="login-page">
+  <div class="row"><div class="col-12" style="height: 10px;"></div></div>
+  <div class="row">
+    <div class="col-md-2 col-lg-2 col-sm-1"></div>
+    <div class="col-md-8 col-lg-8 col-sm-10 pretty-form">
+      <form>
+        <div class="row">
+          <div class="col-12 mt-2">&nbsp;</div>
+          <div class="col-12 text-center mb-3">
+            <img src="assets/images/accounts.png" style="height: 10vh; width: auto;" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Correo Electrónico</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Correo Electrónico"
+            [(ngModel)]="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Contraseña"
+            [(ngModel)]="password"
+          />
+        </div>
+        <div class="row" *ngIf="esperando">
+          <div class="col-12">
+            <div class="progress mb-3">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%">Espere...</div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 text-center">
+            <button
+              type="submit"
+              class="btn btn-success mr-2"
+              (click)="login()"
+            >
+              Ingresar
+            </button>
+            <a [routerLink]="['/register']" class="btn btn-primary mr-2">
+              Crear Cuenta
+            </a>
+            <button
+              type="button"
+              class="btn btn-warning"
+              (click)="password_recovery()"
+            >
+              Recuperar Contraseña
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

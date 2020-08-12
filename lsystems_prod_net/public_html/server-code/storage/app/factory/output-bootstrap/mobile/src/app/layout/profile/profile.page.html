@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/images/logo.png" height="20px" width="20px"/>
+      <ion-label style="font-size: 20px;">&nbsp;{{ appName }}</ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-list-header>
+          <h3><strong>Edición de Perfil</strong></h3>
+        </ion-list-header>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="3">
+        <img style=" margin-left: 20px; width: 70px; height: 70px; border-radius: 1vh;" (click)="getPicture()" src="{{ profileImg }}">
+    </ion-col>
+    <ion-col size="9">
+      <ion-item>
+        <ion-label position="floating">Nombre Completo:</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Nombre Completo"
+          [(ngModel)]="user.name"
+        ></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Correo Electrónico:</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Correo Electrónico"
+            [(ngModel)]="user.email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Contraseña"
+            (keyup)="verificarCambioClaves()"
+            [(ngModel)]="clave"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirmar Contraseña:</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Contraseña"
+            (keyup)="verificarCambioClaves()"
+            [(ngModel)]="claveConfirm"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="text-align: center;" *ngIf="cambiandoClaves">
+      <ion-badge *ngIf="!clavesCoinciden" color="danger">
+        Las contraseñas no coinciden
+      </ion-badge>
+      <ion-badge *ngIf="clavesCoinciden" color="success">
+        Las contraseñas coinciden
+      </ion-badge>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button color="success" expand="full" (click)="guardar()">
+        Guardar
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button color="danger" expand="full" [routerLink]="['/main']">
+        Cancelar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <input
+    type="file"
+    #fotoInput
+    [hidden]="true"
+    accept="image/*"
+    name="files[]"
+    (change)="subirImagen($event)"
+  />
+</ion-content>

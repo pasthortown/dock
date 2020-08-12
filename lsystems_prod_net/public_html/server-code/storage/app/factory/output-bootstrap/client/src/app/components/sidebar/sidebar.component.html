@@ -1,0 +1,68 @@
+<nav class="sidebar" [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }">
+   <div class="list-group">
+      <a [routerLink]="['/main']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+         <i class="fas fa-tachometer-alt"></i>&nbsp; <span>Main</span>
+      </a>
+      <div class="nested-menu">
+         <a class="list-group-item" (click)="addExpandClass('bdd videoconference')">
+            <span class="fas fa-database"></span>&nbsp;BDD VIDEOCONFERENCE
+         </a>
+         <li class="nested" [class.expand]="showMenu === 'bdd videoconference'">
+            <ul class="submenu">
+
+
+               <!--videoconference-->
+
+               <li>
+                  <a [routerLink]="['/resource_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">ResourceType </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/schedule_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleType </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/guest_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">GuestType </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/resource']" [routerLinkActive]="['router-link-active']" class="list-group-item">Resource </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/schedule']" [routerLinkActive]="['router-link-active']" class="list-group-item">Schedule </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/guest']" [routerLinkActive]="['router-link-active']" class="list-group-item">Guest </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/responsable']" [routerLinkActive]="['router-link-active']" class="list-group-item">Responsable </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/schedule_resource_assigment']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResourceAssigment </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/schedule_resource_assistant']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResourceAssistant </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/schedule_responsable_assigment']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResponsableAssigment </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/role']" [routerLinkActive]="['router-link-active']" class="list-group-item">Role </a>
+               </li>
+            </ul>
+         </li>
+      </div>
+      <div class="nested-menu">
+         <a class="list-group-item" (click)="addExpandClass('profile')">
+            <span><img class="rounded-circle" src="{{profileImg}}" width="32px" height="32px"></span>&nbsp;<small>{{ user.name }}</small>
+         </a>
+         <li class="nested" [class.expand]="showMenu === 'profile'">
+            <ul class="submenu">
+               <li>
+                  <a [routerLink]="['/profile']" [routerLinkActive]="['router-link-active']" class="list-group-item">Perfil </a>
+               </li>
+               <li>
+                  <a [routerLink]="['/login']" (click)="logOut()"><span>&nbsp;Cerrar Sesión</span></a>
+               </li>
+            </ul>
+         </li>
+      </div>
+   </div>
+</nav>

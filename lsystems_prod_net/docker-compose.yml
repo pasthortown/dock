@@ -1,0 +1,34 @@
+version: '3'
+
+networks:
+  lsystems_prod_net:
+    ipam:
+      config:
+        - subnet: 172.51.0.0/24
+
+services:
+  web:
+    image: nginx:latest
+    restart: always
+    ports:
+    - "80:80"
+    volumes:
+    - ./config:/etc/nginx/conf.d
+    - ./public_html:/public_html
+    networks:
+      lsystems_prod_net:
+        ipv4_address: 172.51.0.10
+    links:
+    - php
+  php:
+    image: pasthortown/youtube-dl:latest
+    restart: always
+    ports:
+    - "8001:8001"
+    volumes:
+    - ./public_html:/public_html
+    networks:
+      lsystems_prod_net:
+        ipv4_address: 172.51.0.11
+    environment:
+      PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.composer/vendor/bin

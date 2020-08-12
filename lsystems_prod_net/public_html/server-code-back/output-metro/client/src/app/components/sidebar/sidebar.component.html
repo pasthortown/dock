@@ -1,0 +1,25 @@
+<div class="sidebar-header bg-darkGrayBlue fg-white" data-image="images/sb-bg-1.jpg">
+   <a class="fg-white sub-action"[routerLink]="['/login']" (click)="logOut()">
+      <span class="mif-settings-power mif-2x"></span>
+   </a>
+   <a class="avatar" [routerLink]="['/profile']" [routerLinkActive]="['router-link-active']">
+      <img src="{{profileImg}}"/>
+   </a>
+   <span class="title" *ngIf="refreshUser()">{{ user.name }}</span>
+   <span class="subtitle"> 2019 © LSystems</span>
+</div>
+<ul class="sidebar-menu">
+   <li class="group-title">BDD</li>
+   <li>
+      <a [routerLink]="['/target']" [routerLinkActive]="['router-link-active']">Target </a>
+   </li>
+   <li>
+      <a [routerLink]="['/statistic']" [routerLinkActive]="['router-link-active']">Statistic </a>
+   </li>
+   <li>
+      <a [routerLink]="['/monitoring_tool']" [routerLinkActive]="['router-link-active']">MonitoringTool </a>
+   </li>
+   <li>
+      <a [routerLink]="['/target_type']" [routerLinkActive]="['router-link-active']">TargetType </a>
+   </li>
+</ul>
