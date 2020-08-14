@@ -30,17 +30,21 @@ class ControllerTemplateController extends Controller
         foreach ($tableColumns as $column) {
             if ($column['group']!=="hidden") {
                 if ($column['type']==="gmap") {
-                    array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_latitude");
-                    array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_longitude");
+                    if ($bddType == 'SQL') {
+                        array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_latitude");
+                        array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_longitude");
+                    }
                 } else {
                     array_push($colsVisibles,UtilitiesController::checkNames($column['name']));
                 }
             } else {
                 if ($column['type']==="gmap") {
-                    array_push($colsHidden,UtilitiesController::checkNames($column['name'])."_latitude");
-                    array_push($colsHidden,UtilitiesController::checkNames($column['name'])."_longitude");
+                    if ($bddType == 'SQL') {
+                        array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_latitude");
+                        array_push($colsVisibles,UtilitiesController::checkNames($column['name'])."_longitude");
+                    }
                 } else {
-                    array_push($colsHidden,UtilitiesController::checkNames($column['name']));
+                    array_push($colsVisibles,UtilitiesController::checkNames($column['name']));
                 }
             }
         }
@@ -53,14 +57,14 @@ class ControllerTemplateController extends Controller
             }
             $colsAsText .= "          \$". strtolower($tableNameSingular) ."->".$visible." = \$result['".$visible."'];\n";
             if (!$isHidden) {
-                $colsAsTextNoHidden .= "             '".$visible."'=>\$result['".$visible."'],\n";
+                $colsAsTextNoHidden .= "             '".$visible."' => \$result['".$visible."'],\n";
             }
         }
         foreach ($relationships as $relationship) {
             if ($relationship['toSingular'] === $tableNameSingular) {
                 if ($relationship['kind'] === 'one2one' || $relationship['kind'] === 'one2many') {
                     $colsAsText .= "          \$". strtolower($tableNameSingular) ."->".UtilitiesController::checkNames($relationship['fromSingular'])."_id = \$result['".UtilitiesController::checkNames($relationship['fromSingular'])."_id'];\n";
-                    $colsAsTextNoHidden .= "             '".UtilitiesController::checkNames($relationship['fromSingular'])."_id'=>\$result['".UtilitiesController::checkNames($relationship['fromSingular'])."_id'],\n";
+                    $colsAsTextNoHidden .= "             '".UtilitiesController::checkNames($relationship['fromSingular'])."_id' => \$result['".UtilitiesController::checkNames($relationship['fromSingular'])."_id'],\n";
                 }
             }
             if ($relationship['fromSingular'] === $tableNameSingular) {
@@ -163,6 +167,11 @@ class ControllerTemplateController extends Controller
             $content .= "          \$". strtolower($tableNameSingular) ." = " . $tableNameSingular ."::create([\n";
             $content .= "             'id' => \$id,\n";
             $content .= $colsAsTextNoHidden;
+            foreach ($tableColumns as $column) {
+                if ($column['type']==="gmap") {
+                    $content .= "             '".UtilitiesController::checkNames($column['name'])."' => \$result['".UtilitiesController::checkNames($column['name'])."'],\n";
+                }
+            }
             $content .= "          ]);\n";
         }
         $content .= "       } catch (Exception \$e) {\n";
@@ -214,6 +223,11 @@ class ControllerTemplateController extends Controller
         } else {
             $content .= "          \$". strtolower($tableNameSingular) ." = ". $tableNameSingular ."::find(intval(\$result['id']));\n";
             $content .= $colsAsText;
+            foreach ($tableColumns as $column) {
+                if ($column['type']==="gmap") {
+                    $content .= "             \$". strtolower($tableNameSingular) ."->".UtilitiesController::checkNames($column['name'])." = \$result['".UtilitiesController::checkNames($column['name'])."'];\n";
+                }
+            }
             $content .= "          \$". strtolower($tableNameSingular) ."->save();\n";
         }
         $content .= "       } catch (Exception \$e) {\n";
@@ -319,11 +333,21 @@ class ControllerTemplateController extends Controller
             $content .= "         if (\$exist) {\n";
             $content .= "          \$". strtolower($tableNameSingular) ." = ". $tableNameSingular ."::find(intval(\$result['id']));\n";
             $content .= $colsAsText;
+            foreach ($tableColumns as $column) {
+                if ($column['type']==="gmap") {
+                    $content .= "             \$". strtolower($tableNameSingular) ."->".UtilitiesController::checkNames($column['name'])." = \$result['".UtilitiesController::checkNames($column['name'])."'];\n";
+                }
+            }
             $content .= "          \$". strtolower($tableNameSingular) ."->save();\n";
             $content .= "         } else {\n";
             $content .= "          \$". strtolower($tableNameSingular) ." = " . $tableNameSingular ."::create([\n";
             $content .= "             'id' => \$result['id'],\n";
             $content .= $colsAsTextNoHidden;
+            foreach ($tableColumns as $column) {
+                if ($column['type']==="gmap") {
+                   $content .= "             '".UtilitiesController::checkNames($column['name'])."' => \$result['".UtilitiesController::checkNames($column['name'])."'],\n";
+                }
+            }
             $content .= "          ]);\n";
             $content .= "         }\n";
             $content .= "       }\n";

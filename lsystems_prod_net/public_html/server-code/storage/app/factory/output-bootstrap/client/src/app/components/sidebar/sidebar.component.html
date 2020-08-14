@@ -4,47 +4,26 @@
          <i class="fas fa-tachometer-alt"></i>&nbsp; <span>Main</span>
       </a>
       <div class="nested-menu">
-         <a class="list-group-item" (click)="addExpandClass('bdd videoconference')">
-            <span class="fas fa-database"></span>&nbsp;BDD VIDEOCONFERENCE
+         <a class="list-group-item" (click)="addExpandClass('bdd lstracking')">
+            <span class="fas fa-database"></span>&nbsp;BDD LSTRACKING
          </a>
-         <li class="nested" [class.expand]="showMenu === 'bdd videoconference'">
+         <li class="nested" [class.expand]="showMenu === 'bdd lstracking'">
             <ul class="submenu">
 
 
-               <!--videoconference-->
+               <!--LSTracking-->
 
                <li>
-                  <a [routerLink]="['/resource_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">ResourceType </a>
+                  <a [routerLink]="['/mobile_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">MobileType </a>
                </li>
                <li>
-                  <a [routerLink]="['/schedule_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleType </a>
+                  <a [routerLink]="['/mobile_attachment']" [routerLinkActive]="['router-link-active']" class="list-group-item">MobileAttachment </a>
                </li>
                <li>
-                  <a [routerLink]="['/guest_type']" [routerLinkActive]="['router-link-active']" class="list-group-item">GuestType </a>
+                  <a [routerLink]="['/mobile']" [routerLinkActive]="['router-link-active']" class="list-group-item">Mobile </a>
                </li>
                <li>
-                  <a [routerLink]="['/resource']" [routerLinkActive]="['router-link-active']" class="list-group-item">Resource </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/schedule']" [routerLinkActive]="['router-link-active']" class="list-group-item">Schedule </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/guest']" [routerLinkActive]="['router-link-active']" class="list-group-item">Guest </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/responsable']" [routerLinkActive]="['router-link-active']" class="list-group-item">Responsable </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/schedule_resource_assigment']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResourceAssigment </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/schedule_resource_assistant']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResourceAssistant </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/schedule_responsable_assigment']" [routerLinkActive]="['router-link-active']" class="list-group-item">ScheduleResponsableAssigment </a>
-               </li>
-               <li>
-                  <a [routerLink]="['/role']" [routerLinkActive]="['router-link-active']" class="list-group-item">Role </a>
+                  <a [routerLink]="['/mobile_position']" [routerLinkActive]="['router-link-active']" class="list-group-item">MobilePosition </a>
                </li>
             </ul>
          </li>

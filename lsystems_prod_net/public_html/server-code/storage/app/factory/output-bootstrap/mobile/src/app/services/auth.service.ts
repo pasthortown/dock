@@ -16,7 +16,7 @@ export class AuthService {
   
   login(email: String, password: String): Promise<any> {
     const data = {email: email, password: password};
-    return this.http.post(environment.api_videoconference + 'login', data, this.options)
+    return this.http.post(environment.api_lstracking + 'login', data, this.options)
     .then( r =>
       JSON.parse(r.data)
     ).catch( error => { console.log(error); });
@@ -24,7 +24,7 @@ export class AuthService {
   
   register(name: String, email: String): Promise<any> {
     const data = {name: name, email: email};
-    return this.http.post(environment.api_videoconference + 'register', data, this.options)
+    return this.http.post(environment.api_lstracking + 'register', data, this.options)
     .then( r =>
       JSON.parse(r.data)
     ).catch( error => { console.log(error); });
@@ -32,7 +32,7 @@ export class AuthService {
 
   password_recovery_request(email: String): Promise<any> {
     const data = {email: email};
-    return this.http.post(environment.api_videoconference + 'password_recovery_request', data, this.options)
+    return this.http.post(environment.api_lstracking + 'password_recovery_request', data, this.options)
     .then( r =>
       JSON.parse(r.data)
     ).catch( error => { console.log(error); });
@@ -41,7 +41,7 @@ export class AuthService {
   password_change(new_password: String): Promise<any> {
     const data = {new_password: new_password};
     this.options = {'api_token': sessionStorage.getItem('api_token'), 'Content-Type': 'application/json'};
-    return this.http.post(environment.api_videoconference + 'user/password_change', data, this.options)
+    return this.http.post(environment.api_lstracking + 'user/password_change', data, this.options)
     .then( r =>
       JSON.parse(r.data)
     ).catch( error => { console.log(error); });

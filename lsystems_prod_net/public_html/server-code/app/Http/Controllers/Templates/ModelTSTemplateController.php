@@ -128,7 +128,7 @@ class ModelTSTemplateController extends Controller
                         $content .= "      this.".UtilitiesController::checkNames($column['name'])."_latitude = 0;\n";
                         $content .= "      this.".UtilitiesController::checkNames($column['name'])."_longitude = 0;\n";
                     } else {
-                        $content .= "   ".UtilitiesController::checkNames($column['name'])." = { type: \"Point\", coordinates: [ 0, 0 ] };\n";
+                        $content .= "      this.".UtilitiesController::checkNames($column['name'])." = { type: \"Point\", coordinates: [ 0, 0 ] };\n";
                     }
                 }
             }

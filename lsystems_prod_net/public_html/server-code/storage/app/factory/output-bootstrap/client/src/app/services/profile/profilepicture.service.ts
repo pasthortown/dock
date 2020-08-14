@@ -9,7 +9,7 @@ providedIn: 'root'
 })
 export class ProfilePictureService {
 
-   url = environment.api_videoconference + 'profilepicture/';
+   url = environment.api_lstracking + 'profilepicture/';
    options = {headers: null};
 
    constructor(private http: HttpClient) {

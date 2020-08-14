@@ -103,9 +103,6 @@ class MigrationTemplateController extends Controller
         } else {
             $content .= "       Schema::create('".UtilitiesController::checkNames($tableNamePlural)."', function (\$collection) {\n";
             foreach ($columnsFinal as $column) {
-                if($column['type']==="gmap") {
-                    $content .= "          \$collection->geospatial('".UtilitiesController::checkNames($column['name'])."', '2d');\n";
-                }
                 if($column['unique']) {
                     $content .= "          \$collection->unique('".UtilitiesController::checkNames($column['name'])."');\n";
                 }

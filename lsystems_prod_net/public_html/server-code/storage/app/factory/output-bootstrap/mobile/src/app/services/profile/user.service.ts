@@ -8,10 +8,11 @@ import { User } from './../../models/profile/User';
 })
 export class UserService {
 
-   url = environment.api_videoconference + 'user/';
+   url = environment.api_lstracking + 'user/';
    options = null;
 
    constructor(private http: HTTP) {
+      this.http.setDataSerializer('json');
       this.options = {'api_token': sessionStorage.getItem('api_token'), 'Content-Type': 'application/json'};
    }
 
